@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>强制清空缓存</title>
+  <style>
+    body { font-family: sans-serif; padding: 40px; background: #f5f5f5; }
+    .box { background: white; padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+    h1 { color: #1976D2; }
+    button { background: #f44336; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; margin: 10px 5px; }
+    button:hover { background: #d32f2f; }
+    button.blue { background: #1976D2; }
+    button.blue:hover { background: #1565C0; }
+    .status { margin-top: 20px; padding: 15px; background: #e3f2fd; border-radius: 8px; }
+    pre { background: #f5f5f5; padding: 15px; border-radius: 8px; overflow-x: auto; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>🧹 强制清空缓存工具</h1>
+    <p>点击下方按钮清空所有本地数据，然后返回应用：</p>
+    
+    <button onclick="clearAll()">清空所有数据</button>
+    <button class="blue" onclick="location.href='https://gongchengbao.pages.dev'">返回应用</button>
+    
+    <div class="status" id="status">
+      <strong>当前 localStorage 状态：</strong>
+      <pre id="ls"></pre>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_PREFIX = 'sb_txnumwlfnjkmawyspopc.supabase.co_';
+    
+    function updateStatus() {
+      const items = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.includes('safetyRepair') || key.includes('sb_') || key.includes('SUPABASE')) {
+          items[key] = localStorage.getItem(key).substring(0, 100) + (localStorage.getItem(key).length > 100 ? '...' : '');
+        }
+      }
+      document.getElementById('ls').textContent = JSON.stringify(items, null, 2);
+    }
+    
+    updateStatus();
+    
+    function clearAll() {
+      // 清空所有相关数据
+      const keysToDelete = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.includes('safetyRepair') || key.includes('sb_') || key.includes('SUPABASE')) {
+          keysToDelete.push(key);
+        }
+      }
+      
+      keysToDelete.forEach(key => localStorage.removeItem(key));
+      
+      document.getElementById('status').innerHTML = '<strong style="color:green">✓ 已清空 ' + keysToDelete.length + ' 个数据项</strong><br><br>点击"返回应用"刷新页面';
+      document.getElementById('ls').textContent = '(已清空)';
+    }
+  </script>
+</body>
+</html>
