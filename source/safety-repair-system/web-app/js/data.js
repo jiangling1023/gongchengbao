@@ -104,6 +104,8 @@ var state = (function () {
   return seedData();
 })();
 if (!Array.isArray(state.users)) { state.users = []; }
+// 挂载到 window，供其他模块访问
+window.state = state;
 
 function save() {
   try { localStorage.setItem(STORE_KEY, JSON.stringify(state)); } catch (e) {}
