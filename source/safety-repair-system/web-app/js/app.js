@@ -416,7 +416,8 @@ function visibleTickets() {
 }
 /* 可指派对象：员工 / 负责人 */
 function assignOptions(selected) {
-  return '<option value="">未指派</option>' + state.users
+  var users = state.users || [];
+  return '<option value="">未指派</option>' + users
     .filter(function (x) { return x.role === 'worker' || x.role === 'supervisor'; })
     .map(function (x) {
       var sel = x.username === selected ? 'selected' : '';
@@ -472,7 +473,8 @@ function viewTickets() {
 }
 function openTicketModal(id) {
   var t = id ? state.tickets.find(function (x) { return x.id === Number(id); }) : null;
-  var devOpts = '<option value="0">（未关联）</option>' + state.devices.map(function (x) {
+  var devices = state.devices || [];
+  var devOpts = '<option value="0">（未关联）</option>' + devices.map(function (x) {
     return '<option value="' + x.id + '" ' + (t && Number(t.device_id) === x.id ? 'selected' : '') + '>' + esc(x.code) + ' ' + esc(x.brand) + ' ' + esc(x.model) + ' (' + esc(x.location) + ')</option>';
   }).join('');
   var assignHtml = '';
