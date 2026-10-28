@@ -23,6 +23,7 @@ var NAV = [
   { key: 'quick', icon: '🃏', label: '速查卡' },
   { key: 'kb', icon: '📚', label: '知识库' },
   { key: 'tools', icon: '🧰', label: '工程宝' },
+  { key: 'network', icon: '🌐', label: '网络工具' },
   { key: 'sync', icon: '🔄', label: '数据同步' }
 ];
 
@@ -119,6 +120,7 @@ function render() {
   else if (currentView === 'quick') { c.innerHTML = viewQuick(); }
   else if (currentView === 'kb') { c.innerHTML = viewKB(); }
   else if (currentView === 'tools') { c.innerHTML = viewTools(); bindToolInputs(); computeTool(); }
+  else if (currentView === 'network') { c.innerHTML = window.netToolsView ? window.netToolsView() : '<div class="empty">加载中...</div>'; }
   else if (currentView === 'sync') { c.innerHTML = viewSync(); }
   else if (currentView === 'users') { c.innerHTML = viewUsers(); }
   window.scrollTo(0, 0);
@@ -954,6 +956,7 @@ document.addEventListener('click', function (e) {
     case 'wizReset': wizReset(); break;
     case 'quickTab': quickTab = arg; render(); break;
     case 'toolTab': toolTab = arg; render(); break;
+    case 'netTab': if (window.netTabSwitch) window.netTabSwitch(arg); render(); break;
     case 'syncExport': syncExport(); break;
     case 'syncImport': syncImport(); break;
     case 'syncReset': syncReset(); break;
