@@ -137,7 +137,7 @@
     }
   };
 
-  function encodeTable(name) { return PROJECT_ID + '__' + name; }
+  function encodeTable(name) { return name; }  // Supabase 表名不需要前缀
 
   function getAccessToken() {
     try { return localStorage.getItem('sb-' + SB_URL.replace(/https?:\/\//, '') + '-auth-token') || ''; } catch (e) { return ''; }
