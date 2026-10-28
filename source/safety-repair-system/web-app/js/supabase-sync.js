@@ -183,7 +183,9 @@
 
       // 只推有 id 的记录（新增/更新）
       var promises = [];
-      if (devices.length) promises.push(api.upsert('devices', devices.map(function (d) { return cleanRow(d, ['id','code','type','brand','model','ip','status','location','note','parent_id','building','floor','created']); })));
+      if (devices.length) promises.push(api.upsert('devices', devices.map(function (d) {
+        return cleanRow(d, ['id','code','type','brand','model','ip_address','status','location','note','parent_id','building','floor','created']);
+      })));
       if (tickets.length) promises.push(api.upsert('tickets', tickets.map(function (t) { return cleanRow(t, ['id','code','device_id','device','title','ftype','level','status','description','solution','created','closed','assigned']); })));
       if (inspections.length) promises.push(api.upsert('inspections', inspections.map(function (i) { return cleanRow(i, ['id','title','date','result','note']); })));
       if (users.length) promises.push(api.upsert('users', users.map(function (u) { return cleanRow(u, ['id','username','pass_hash','name','role','phone','status','created']); })));

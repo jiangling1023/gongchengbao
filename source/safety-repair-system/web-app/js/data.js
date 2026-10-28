@@ -70,16 +70,16 @@ async function verifyPassword(pwd, storedHash) {
 /* ---------- 种子数据（翻译自 DBHelper.java 的种子） ---------- */
 var SEED = {
   devices: [
-    { id: 1, code: 'S001', parent_id: 0, type: 'camera', brand: '海康威视', model: 'DS-2CD3346', ip: '10.10.10.21', status: 'online', location: '1F大堂东侧', building: '', floor: '1F', note: '2.8mm枪机', created: '2026-01-01' },
-    { id: 2, code: 'S002', parent_id: 0, type: 'camera', brand: '海康威视', model: 'DS-2CD3T46', ip: '10.10.10.22', status: 'online', location: '2F电梯厅', building: '', floor: '2F', note: '4mm半球', created: '2026-01-01' },
-    { id: 3, code: 'S003', parent_id: 0, type: 'door', brand: '立林', model: 'L-A1四门控制器', ip: '10.10.20.10', status: 'online', location: '1F弱电间', building: '', floor: '1F', note: 'TCP/IP通讯', created: '2026-01-01' },
-    { id: 4, code: 'S004', parent_id: 3, type: 'door', brand: '立林', model: '读卡器IC', ip: '-', status: 'online', location: '1F大门', building: '', floor: '1F', note: '韦根34', created: '2026-01-01' },
-    { id: 5, code: 'S005', parent_id: 0, type: 'camera', brand: '大华', model: 'DH-IPC-HFW', ip: '10.10.10.31', status: 'unknown', location: '3F走廊', building: '', floor: '3F', note: '待核IP', created: '2026-01-02' }
+    { id: 1, code: 'S001', parent_id: 0, type: 'camera', brand: '海康威视', model: 'DS-2CD3346', ip: '10.10.10.21', ip_address: '10.10.10.21', status: 'online', location: '1F大堂东侧', building: '', floor: '1F', note: '2.8mm枪机', created: '2026-01-01' },
+    { id: 2, code: 'S002', parent_id: 0, type: 'camera', brand: '海康威视', model: 'DS-2CD3T46', ip: '10.10.10.22', ip_address: '10.10.10.22', status: 'online', location: '2F电梯厅', building: '', floor: '2F', note: '4mm半球', created: '2026-01-01' },
+    { id: 3, code: 'S003', parent_id: 0, type: 'door', brand: '立林', model: 'L-A1四门控制器', ip: '10.10.20.10', ip_address: '10.10.20.10', status: 'online', location: '1F弱电间', building: '', floor: '1F', note: 'TCP/IP通讯', created: '2026-01-01' },
+    { id: 4, code: 'S004', parent_id: 3, type: 'door', brand: '立林', model: '读卡器IC', ip: '-', ip_address: '-', status: 'online', location: '1F大门', building: '', floor: '1F', note: '韦根34', created: '2026-01-01' },
+    { id: 5, code: 'S005', parent_id: 0, type: 'camera', brand: '大华', model: 'DH-IPC-HFW', ip: '10.10.10.31', ip_address: '10.10.10.31', status: 'unknown', location: '3F走廊', building: '', floor: '3F', note: '待核IP', created: '2026-01-02' }
   ],
   tickets: [
-    { id: 1, code: 'WX-20251001', device_id: 1, device: '1F大堂东侧-海康DS-2CD3346', title: '设备离线', ftype: '网络', level: 'P2', status: 'closed', description: 'ping不通，PoE端口down', solution: '更换网线水晶头，端口恢复', created: '2025-10-01', closed: '2025-10-01' },
-    { id: 2, code: 'WX-20251002', device_id: 4, device: '1F大门-立林读卡器', title: '刷卡不开门', ftype: '权限', level: 'P1', status: 'closed', description: '卡片过期未续', solution: '平台延期并补卡', created: '2025-10-02', closed: '2025-10-02' },
-    { id: 3, code: 'WX-20251003', device_id: 5, device: '3F走廊-大华DH-IPC-HFW', title: '画面卡顿', ftype: '硬件', level: 'P2', status: 'processing', description: '夜间红外画面卡顿，疑似电源老化', solution: '待更换电源适配器', created: '2025-10-03', closed: '' }
+    { id: 1, code: 'WX-20251001', device_id: 1, device: '1F大堂东侧-海康DS-2CD3346', title: '设备离线', ftype: '网络', level: 'P2', status: 'closed', description: 'ping不通，PoE端口down', desc: 'ping不通，PoE端口down', solution: '更换网线水晶头，端口恢复', created: '2025-10-01', closed: '2025-10-01' },
+    { id: 2, code: 'WX-20251002', device_id: 4, device: '1F大门-立林读卡器', title: '刷卡不开门', ftype: '权限', level: 'P1', status: 'closed', description: '卡片过期未续', desc: '卡片过期未续', solution: '平台延期并补卡', created: '2025-10-02', closed: '2025-10-02' },
+    { id: 3, code: 'WX-20251003', device_id: 5, device: '3F走廊-大华DH-IPC-HFW', title: '画面卡顿', ftype: '硬件', level: 'P2', status: 'processing', description: '夜间红外画面卡顿，疑似电源老化', desc: '夜间红外画面卡顿，疑似电源老化', solution: '待更换电源适配器', created: '2025-10-03', closed: '' }
   ],
   inspections: []
 };
