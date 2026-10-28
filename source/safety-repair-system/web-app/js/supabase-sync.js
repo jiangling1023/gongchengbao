@@ -43,9 +43,17 @@
       }
       return fetch(SB_URL + '/rest/v1/' + encodeTable(table) + '?select=*', {
         method: 'GET',
-        headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Prefer': 'return=representation' }
+        headers: {
+          'apikey': SB_KEY,
+          'Authorization': 'Bearer ' + SB_KEY,
+          'Prefer': 'return=representation',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
+        },
+        cache: 'no-store'
       }).then(json).then(function (d) {
-        localStorage.setItem(cacheKey, JSON.stringify({ ts: Date.now(), data: d }));
+        // 清除缓存，强制下次重新加载
+        localStorage.removeItem(cacheKey);
         return d;
       }).catch(function () { return []; });
     },
