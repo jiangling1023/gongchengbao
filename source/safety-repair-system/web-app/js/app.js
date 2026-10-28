@@ -138,9 +138,9 @@ function viewHome() {
     { key: 'kb', icon: '📚', title: '知识库', sub: '红线与口诀' },
     { key: 'tools', icon: '🧰', title: '工程宝工具', sub: '计算/速查' },
     { key: 'sync', icon: '🔄', title: '数据同步', sub: 'JSON 互通' },
-    { key: 'discover', icon: '🔍', title: '设备发现', sub: '请使用安卓版', disabled: true },
-    { key: 'ping', icon: '📡', title: '网络 Ping', sub: '请使用安卓版', disabled: true },
-    { key: 'scan', icon: '🔌', title: '端口扫描', sub: '请使用安卓版', disabled: true }
+    { key: 'network', icon: '🔍', title: '设备发现', sub: '网络诊断工具' },
+    { key: 'network', icon: '📡', title: '网络 Ping', sub: '连通性测试' },
+    { key: 'network', icon: '🔌', title: '端口扫描', sub: '开放端口检测' }
   ];
   /* 人员管理（仅 admin 可见） */
   if (isAdmin()) {
