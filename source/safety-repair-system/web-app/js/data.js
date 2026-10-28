@@ -101,7 +101,8 @@ var state = (function () {
       }
     }
   } catch (e) {}
-  return seedData();
+  // 首次使用或数据损坏时，返回空数据结构（不用种子数据）
+  return { devices: [], tickets: [], inspections: [] };
 })();
 if (!Array.isArray(state.users)) { state.users = []; }
 // 挂载到 window，供其他模块访问

@@ -1026,23 +1026,25 @@ function bindLogin() {
 
 /* ---------------- 启动 ---------------- */
 async function boot() {
-  // 先尝试从云端加载数据（忽略错误，本地优先）
+  // 先尝试从云端加载数据（云端优先）
   if (typeof window.sbLoad === 'function') {
     try {
       var cloudData = await window.sbLoad();
-      if (cloudData && cloudData.devices) {
+      if (cloudData) {
         // 字段映射：ip_address → ip，description → desc 兼容
-        cloudData.devices.forEach(function (d) {
+        cloudData.devices && cloudData.devices.forEach(function (d) {
           if (d.ip_address && !d.ip) d.ip = d.ip_address;
         });
         cloudData.tickets && cloudData.tickets.forEach(function (t) {
           if (t.description !== undefined && t.desc === undefined) t.desc = t.description;
         });
-        // 合并到本地 state（云端优先）
-        if (cloudData.devices.length) state.devices = cloudData.devices;
-        if (cloudData.tickets.length) state.tickets = cloudData.tickets;
-        if (cloudData.users.length) state.users = cloudData.users;
-        if (cloudData.inspections.length) state.inspections = cloudData.inspections;
+        // 云端数据覆盖本地 state
+        state.devices = cloudData.devices || [];
+        state.tickets = cloudData.tickets || [];
+        state.users = cloudData.users || [];
+        state.inspections = cloudData.inspections || [];
+        // 保存到 localStorage
+        save();
       }
     } catch (e) {
       console.warn('[Boot] 云端加载失败，使用本地数据:', e);
