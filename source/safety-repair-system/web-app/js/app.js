@@ -5,6 +5,16 @@
 
 'use strict';
 
+// 确保 state 可用（兼容 data.js 未加载或 window.state 未定义的情况）
+if (!window.state) {
+  window.state = { devices: [], tickets: [], inspections: [], users: [] };
+}
+// 别名，方便后续代码使用
+var state = window.state;
+// 辅助：安全访问 window.state
+function getState(key) { return (window.state && window.state[key]) || []; }
+function setState(key, val) { if (!window.state) window.state = {}; window.state[key] = val; }
+
 /* ---------------- 全局视图状态 ---------------- */
 var currentView = 'home';
 var devView = 'list';
@@ -40,7 +50,7 @@ function esc(s) {
 }
 function byId(id) { return document.getElementById(id); }
 function valOf(id) { var e = byId(id); return e ? e.value : ''; }
-function processingCount() { return state.tickets.filter(function (t) { return t.status === 'processing'; }).length; }
+function processingCount() { return (window.state && window.state.tickets) ? window.state.tickets.filter(function (t) { return t.status === 'processing'; }).length : 0; }
 function statusLabel(s) {
   return ({ online: '在线', offline: '离线', unknown: '未知', fault: '故障', processing: '处理中', closed: '已关闭', pending: '待处理' })[s] || s || '未知';
 }
