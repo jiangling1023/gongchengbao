@@ -59,5 +59,21 @@
   <script src="js/content.js"></script>
   <script src="js/tools.js"></script>
   <script src="js/app.js"></script>
+<!-- 清空缓存按钮（调试用） -->
+  <script>
+    // 一键清空所有 localStorage 数据
+    function clearAllLocalStorage() {
+      localStorage.clear();
+      location.reload();
+    }
+    // 页面加载后自动清空云端同步缓存
+    window.addEventListener("load", function() {
+      try { localStorage.removeItem("sb_txnumwlfnjkmawyspopc.supabase.co-devices_cache"); } catch(e) {}
+      try { localStorage.removeItem("sb_txnumwlfnjkmawyspopc.supabase.co-tickets_cache"); } catch(e) {}
+      try { localStorage.removeItem("sb_txnumwlfnjkmawyspopc.supabase.co-inspections_cache"); } catch(e) {}
+      try { localStorage.removeItem("sb_txnumwlfnjkmawyspopc.supabase.co-users_cache"); } catch(e) {}
+      console.log("[Clear] 云端缓存已清空");
+    });
+  </script>
 </body>
 </html>
