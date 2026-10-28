@@ -1,0 +1,7 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://mirrors.tencent.com/nexus/repository/maven-public/' }
+    }
+}
+rootProject.name = "SafetyRepair"
+include ':app'

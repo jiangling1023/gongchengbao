@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>安防维修排查 · 网页版</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Supabase 配置（部署前填入你的项目 URL 和 anon key） -->
+  <script>
+    // Supabase 配置
+    window.SUPABASE_URL = 'https://txnumwlfnjkmawyspopc.supabase.co';
+    window.SUPABASE_ANON_KEY = 'sb_publishable_oMbNAONl9E4Rio_xcvF6Gg_l1vTPzJN';
+  </script>
+  <script src="js/supabase-sync.js"></script>
+</head>
+<body>
+  <!-- 登录门（全屏，首次打开显示） -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-card">
+      <div class="login-head">
+        <div class="login-logo">🛡️</div>
+        <div class="login-title">安防维修排查</div>
+        <div class="login-sub">网页版 · 请登录后使用</div>
+      </div>
+      <form id="loginForm" class="login-form" autocomplete="off">
+        <label class="fld"><span>用户名</span><input id="login_user" type="text" autocomplete="username" placeholder="如 admin"></label>
+        <label class="fld"><span>密码</span><input id="login_pass" type="password" autocomplete="current-password" placeholder="请输入密码"></label>
+        <button type="submit" class="login-btn">登 录</button>
+        <div id="login_err" class="login-err"></div>
+      </form>
+      <div class="login-hint">内置账号：<b>admin</b> ｜ 密码：<b>Admin@2026</b>（首次登录后请修改）</div>
+    </div>
+  </div>
+
+  <div id="app" class="hidden">
+    <header class="app-header">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-logo">🛡️</span>
+          <div>
+            <div class="brand-title">安防维修排查</div>
+            <div class="brand-sub">网页版 · 数据互通</div>
+          </div>
+        </div>
+        <nav class="top-nav" id="topNav"></nav>
+        <div class="header-actions" id="headerActions"></div>
+      </div>
+    </header>
+    <main id="content" class="content"></main>
+    <footer class="app-footer">
+      安防维修排查 · 网页版 © 2026 ｜ 数据本地存储（localStorage），JSON 文件与安卓版互通
+    </footer>
+  </div>
+  <div id="modalRoot" class="modal-root"></div>
+  <div id="toast" class="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/content.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

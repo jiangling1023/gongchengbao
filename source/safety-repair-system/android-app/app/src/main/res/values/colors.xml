@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#1f6feb</color>
+    <color name="bg">#f2f4f7</color>
+    <color name="card">#ffffff</color>
+    <color name="text">#1f2328</color>
+    <color name="muted">#6b7280</color>
+    <color name="ok">#1a7f37</color>
+    <color name="warn">#bc4c00</color>
+    <color name="danger">#d1242f</color>
+    <color name="chip">#eef2f7</color>
+    <color name="cam">#1565c0</color>
+    <color name="door">#e65100</color>
+    <color name="fault_bg">#fff5f5</color>
+    <color name="fault_border">#d1242f</color>
+</resources>
