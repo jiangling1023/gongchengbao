@@ -327,7 +327,7 @@ function openModal(title, bodyHtml) {
   document.querySelectorAll('select').forEach(function (s) {
     try { s.blur(); } catch (e) {}
   });
-  root.innerHTML = '<div class="modal-backdrop" data-action="closeModal"><div class="modal" onclick="event.stopPropagation()">'
+  root.innerHTML = '<div class="modal-backdrop" data-action="closeModal"><div class="modal">'
     + '<div class="modal-head"><span>' + esc(title) + '</span><button class="modal-x" data-action="closeModal" tabindex="0">✕</button></div>'
     + '<div class="modal-body">' + bodyHtml + '</div></div></div>';
   root.classList.add('show');
